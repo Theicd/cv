@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<style>
+:root { --bg:#0b0e14; --surface:#151a28; --text:#e6e6e6; --muted:#a1a1aa; --accent:#4dabf7; --border:#22283a; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Arial; line-height: 1.6; margin: 0; }
+.container { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+h1 { color: var(--text); font-size: 28px; margin: 0 0 6px; }
+.subtitle { color: var(--muted); font-size: 16px; margin-bottom: 6px; }
+.section { margin-top: 22px; }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.qr { text-align: center; }
+.qr img { filter: invert(1) contrast(1.1); width: 110px; height: 110px; }
+.label { color: var(--muted); font-size: 12px; margin-top: 8px; }
+.qr-note { color: var(--muted); font-size: 11px; margin-top: 4px; line-height: 1.4; max-width: 180px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 8px 0 0; list-style: none; }
+.chips li { background: #0f1424; border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 14px; font-size: 13px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+details.card { padding: 0; }
+details.card > summary { cursor: pointer; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 14px 16px; list-style: none; }
+details.card > summary::-webkit-details-marker { display:none; }
+.proj-title { font-weight: 600; color: var(--text); }
+.proj-sub { color: var(--muted); font-size: 13px; }
+.highlights { color: var(--accent); font-size: 12px; }
+details.card .content { padding: 0 16px 14px; }
+.bullets { margin: 8px 0 0; padding-inline-start: 18px; }
+.bullets li { margin: 4px 0; }
+.infographics { margin: 14px 0 0; }
+.infographic-row { display: flex; gap: 12px; }
+.infographic-item { flex: 1; border: 1px solid var(--border); background: #0f1424; padding: 10px; border-radius: 8px; }
+.chart { display: flex; align-items: center; gap: 6px; }
+.gauge { padding: 8px; color: #1d1d1d; text-align: center; background: #fdd835; border-radius: 6px; font-weight: 600; }
+hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
+/* פריסת פעולות פרויקט */
+.proj-actions { display:flex; flex-direction:column; gap:10px; align-items:center; margin-top:10px; }
+.qr-pair { display:flex; gap:12px; align-items:center; }
+.btn { display:inline-block; background:#0f1424; border:1px solid var(--border); color:var(--text); padding:6px 10px; border-radius:8px; font-size:13px; text-decoration:none; }
+.thumb { width:140px; border:1px solid var(--border); border-radius:6px; display:block; }
+.links { display:flex; gap:8px; justify-content:center; }
+@media print { 
+  body{ background:#fff; color:#000; }
+  .header,.card{ background:#fff; border:1px solid #ddd; }
+  .qr img{ filter:none; }
+  .chips li{ background:none; border:none; padding:0; border-radius:0; color:#000; }
+  .btn{ background:none; border:none; color:#000; padding:0; }
+}
+/* פרטי קשר */
+.contact { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; color: var(--muted); font-size: 13px; }
+.contact span { background:#0f1424; border:1px solid var(--border); padding:6px 10px; border-radius:8px; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+  <div>
+    <h1>[שם מלא]</h1>
+    <div class="subtitle">יועץ AI | ארכיטקט מערכות</div>
+    <div class="contact">
+      <span>טלפון: [מספר]</span>
+      <span>דוא"ל: [כתובת]</span>
+      <span>מיקום: [עיר]</span>
+    </div>
+  </div>
+  
+</div>
+
+<div class="section">
+  <h3>פרופיל מקצועי</h3>
+  <ul class="bullets">
+    <li>ניסיון בפיתוח והטמעה של מערכות AI מקצה לקצה.</li>
+    <li>ניהול פרויקטים טכניים, תיעוד ומדידת ביצועים.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>מיומנויות טכניות</h3>
+  <ul class="chips">
+    <li>Python</li>
+    <li>JavaScript</li>
+    <li>MQL5</li>
+    <li>TensorFlow/Keras</li>
+    <li>PyTorch</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>פרויקטים נבחרים</h3>
+  <div id="projects-list"></div>
+  <!-- Fallback מקומי לפתיחה דרך file:// -->
+  <div id="projects-fallback" style="display:none">
+    <details class="card">
+      <summary>
+        <div>
+          <div class="proj-title">SKYNET (2019–2020)</div>
+          <div class="proj-sub">מערכת מסחר פיננסי מבוססת AI</div>
+        </div>
+        <div class="highlights">100+ עוקבים • $2K→$12K • חיסכון משאבים</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח ואימון רובוטי מסחר (MQL5) והטמעה בסביבות מרובות.</li>
+          <li>ניהול שרתים מרובי ליבות ואופטימיזציית תהליכי הרצה.</li>
+          <li>תכנון מנגנוני אוטומציה וחיסכון במשאבים.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">אימות ביצועים</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.mql5.com/en/users/theicd" alt="QR - קישור לדף MQL5">
+              </a>
+              <div class="label">MQL5</div>
+              <div class="qr-note">קוד לכניסה לדף הפרופיל ב‑MQL5: מעקב ביצועים, גרפים והיסטוריית תוצאות.</div>
+            </div>
+            <div class="qr">
+              <a href="https://c.mql5.com/1/202/huye_mb8i.png" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://c.mql5.com/1/202/huye_mb8i.png" alt="QR - דוח פעילות (תמונה)">
+              </a>
+              <div class="label">דוח פעילות</div>
+              <div class="qr-note">קוד לפתיחת תמונת דוח פעילות: גרף צמיחה וסיכום ביצועים.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">דף MQL5</a>
+            <a class="btn" href="https://c.mql5.com/1/202/huye_mb8i.png" target="_blank" rel="noopener">דוח פעילות</a>
+          </div>
+        </div>
+        <div class="infographics">
+          <div class="infographic-row">
+            <div class="infographic-item">
+              <h4>צמיחת תיק השקעות</h4>
+              <div class="chart">
+                <div class="bar" style="height: 36px; background: #3498db; width: 20%;">$2K</div>
+                <div class="bar" style="height: 36px; background: #2ecc71; width: 100%;">$12K</div>
+              </div>
+            </div>
+            <div class="infographic-item">
+              <h4>חיסכון במשאבים</h4>
+              <div class="gauge" style="width: 93%;">93%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card">
+      <summary>
+        <div>
+          <div class="proj-title">Organic Smart Garden & AI Grow Table (2021–2023)</div>
+          <div class="proj-sub">פיתוח מערכות גידול חכמות ואוטומציה מבוססת AI</div>
+        </div>
+        <div class="highlights">גידול סחלבים אוטומטי • AI לזיהוי מחלות • 3 שיטות גידול</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>תכנון ופיתוח מערכות גידול חכמות (`Organic Smart Garden`) התומכות בגידולי אדמה, הידרופוניקה וצמחי אוויר.</li>
+          <li>פיתוח אבי-טיפוס לשולחן גידול מבוסס AI, המשלב מצלמות וראייה ממוחשבת לזיהוי מזיקים ומחלות בזמן אמת.</li>
+          <li>הטמעת מערכת QR ייחודית למעקב אחר התוצרת מהגידול ועד לצרכן (`Farm-to-Table`).</li>
+          <li>הצלחה מוכחת בגידול צמחים מורכבים (סחלבים, אננס) לאורך שנתיים, תוך אוטומציה של תאורה (Samsung LED) והשקיה.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">הדגמות וידאו</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://www.youtube.com/watch?v=0L_H2eNVt9Y" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=0L_H2eNVt9Y" alt="QR - סרטון הדגמה למערכת גידול">
+              </a>
+              <div class="label">מערכת גידול</div>
+              <div class="qr-note">סרטון הדגמה למערכת הגידול האורגנית, יכולותיה ויתרונותיה.</div>
+            </div>
+            <div class="qr">
+              <a href="https://www.youtube.com/watch?v=ay7qSqfipug" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=ay7qSqfipug" alt="QR - קונספט שולחן AI">
+              </a>
+              <div class="label">קונספט שולחן AI</div>
+              <div class="qr-note">הצגת הקונספט לשולחן הגידול החכם, המשלב יכולות AI.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://www.youtube.com/watch?v=0L_H2eNVt9Y" target="_blank" rel="noopener">צפה בהדגמה</a>
+            <a class="btn" href="https://www.youtube.com/watch?v=ay7qSqfipug" target="_blank" rel="noopener">צפה בקונספט</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card">
+      <summary>
+        <div>
+          <div class="proj-title">קפטן סטורי (Captain Story) (2023-2024)</div>
+          <div class="proj-sub">סוכן AI ליצירת סיפורי ילדים ייחודיים ומרתקים</div>
+        </div>
+        <div class="highlights">AI ליצירת עלילה • פיתוח עולמות דמיוניים • תוכן חינוכי</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח סוכן AI המלווה משתמשים בתהליך יצירת סיפורי ילדים, מרעיון ראשוני ועד לתוצר סופי.</li>
+          <li>מיקוד ביצירת עלילות מורכבות, עולמות דמיוניים עשירים, והעברת מסרים חינוכיים וערכיים.</li>
+          <li>תהליך עבודה דו-שלבי: בניית שלד העלילה והדמויות, ולאחר מכן שילוב גרפיקה וטקסטים.</li>
+          <li>מיועד להורים, מורים, ויוצרי תוכן המעוניינים בכלי חדשני ליצירת תוכן מותאם אישית.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">הדגמות וידאו</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://www.youtube.com/watch?v=bh22GWArSb0" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=bh22GWArSb0" alt="QR - הדגמת קפטן סטורי">
+              </a>
+              <div class="label">הדגמת הסוכן</div>
+              <div class="qr-note">סרטון המציג את סוכן ה-AI "קפטן סטורי" ויכולותיו.</div>
+            </div>
+            <div class="qr">
+              <a href="https://www.youtube.com/watch?v=QPiwTJug2aA" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=QPiwTJug2aA" alt="QR - דוגמת תוצר: כפר הממתקונים">
+              </a>
+              <div class="label">תוצר לדוגמה</div>
+              <div class="qr-note">"כפר הממתקונים" - קונספט לסדרה שנוצר באמצעות קפטן סטורי.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://www.youtube.com/watch?v=bh22GWArSb0" target="_blank" rel="noopener">צפה בהדגמה</a>
+            <a class="btn" href="https://www.youtube.com/watch?v=QPiwTJug2aA" target="_blank" rel="noopener">צפה בתוצר</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card">
+      <summary>
+        <div>
+          <div class="proj-title">Effect-Cube (2024)</div>
+          <div class="proj-sub">פלטפורמה להפיכת תמונות סטטיות לווידאו דינמי</div>
+        </div>
+        <div class="highlights">Three.js • WebGL • עיבוד וידאו</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>עיצוב ובניית חווית משתמש ייחודית המדמה מבט מגוף ראשון (First-Person View), כאשר המשתמש נמצא "בתוך" סצנה תלת-ממדית וצופה במסך וירטואלי.</li>
+          <li>פיתוח ממשק תלת-ממדי אינטראקטיבי באמצעות Three.js המאפשר למשתמשים להוסיף אפקטים ויזואליים לתמונות.</li>
+          <li>יישום מגוון רחב של אפקטים מבוססי WebGL, כולל תנועות מצלמה, מערכות חלקיקים (גשם, שלג) ואפקטי תאורה.</li>
+          <li>בניית מנגנון ייחודי בצד הלקוח להקלטת האנימציה שנוצרה על גבי ה-Canvas וייצוא שלה כקובץ וידאו (MP4) באמצעות MediaRecorder API.</li>
+          <li>כתיבת קוד JavaScript מודולרי ונקי לארגון וניהול של סצנת התלת-ממד, האפקטים השונים, והאינטראקציה עם המשתמש.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">קישור לפרויקט</div>
+          <div class="qr-pair single">
+            <div class="qr">
+              <a href="https://theicd.github.io/Effect-Cube/index3d.html" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://theicd.github.io/Effect-Cube/index3d.html" alt="QR - קישור לפרויקט Effect-Cube">
+              </a>
+              <div class="label">צפה בפרויקט</div>
+              <div class="qr-note">קישור לאתר הפעיל של Effect-Cube.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://theicd.github.io/Effect-Cube/index3d.html" target="_blank" rel="noopener">לצפייה בפרויקט</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card">
+      <summary>
+        <div>
+          <div class="proj-title">Dreamy AI Toons (2024)</div>
+          <div class="proj-sub">פלטפורמה ליצירת דמויות מצוירות באמצעות AI</div>
+        </div>
+        <div class="highlights">OpenAI API • Front-End • מודל תשלום</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח ממשק Web אינטראקטיבי המאפשר למשתמשים ליצור דמויות מצוירות מתיאור טקסטואלי או מתמונה.</li>
+          <li>אינטגרציה מלאה עם OpenAI API (DALL-E) ליצירת התמונות, כולל ניהול מפתחות API של משתמשים.</li>
+          <li>הטמעת מודל עסקי המאפשר שימוש חינמי עם מפתח API אישי או רכישת קרדיטים לשימוש.</li>
+          <li>בניית האתר באמצעות HTML, CSS ו-JavaScript טהור, תוך הקפדה על קוד מודולרי ומאורגן.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">קישור לפרויקט</div>
+          <div class="qr-pair single">
+            <div class="qr">
+              <a href="https://theicd.github.io/DreamyAIToons/" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://theicd.github.io/DreamyAIToons/" alt="QR - קישור לפרויקט Dreamy AI Toons">
+              </a>
+              <div class="label">צפה בפרויקט</div>
+              <div class="qr-note">קישור לאתר הפעיל של Dreamy AI Toons.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://theicd.github.io/DreamyAIToons/" target="_blank" rel="noopener">לצפייה בפרויקט</a>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<hr class="sep" />
+
+<div class="section">
+  <h3>השכלה</h3>
+  <ul class="bullets">
+    <li>[מוסד] — [תואר] ([שנים])</li>
+  </ul>
+  
+  <h3>שפות</h3>
+  <ul class="chips">
+    <li>[עברית]</li>
+    <li>[אנגלית]</li>
+  </ul>
+</div>
+
+</div>
+<script>
+  (function(){
+    const toggleAll = (open) => document.querySelectorAll('details').forEach(d => d.open = open);
+    window.addEventListener('beforeprint', () => toggleAll(true));
+    window.addEventListener('afterprint', () => toggleAll(false));
+    // טעינת כרטיסי פרויקטים מקבצים חיצוניים
+    document.addEventListener('DOMContentLoaded', async () => {
+      const targets = ['projects/skynet.html', 'projects/organic-smart-garden.html', 'projects/captain-story.html', 'projects/dreamy-ai-toons.html', 'projects/effect-cube.html'];
+      const host = document.getElementById('projects-list');
+      const fallback = document.getElementById('projects-fallback');
+      const useFallback = location.protocol === 'file:';
+      if (useFallback) {
+        host.innerHTML = fallback.innerHTML;
+        return;
+      }
+      for (const url of targets) {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('fetch failed');
+          const html = await res.text();
+          const tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          host.append(...tmp.childNodes);
+        } catch(e) {
+          host.innerHTML = fallback.innerHTML;
+          break;
+        }
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
