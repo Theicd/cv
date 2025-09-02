@@ -27,11 +27,13 @@ h1 { color: var(--text); font-size: 28px; margin: 0 0 6px; }
 .section { margin-top: 22px; }
 .header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
 .qr { text-align: center; }
-.qr img { filter: invert(1) contrast(1.1); width: 110px; height: 110px; }
+.qr img { width: 160px; height: 160px; }
 .label { color: var(--muted); font-size: 12px; margin-top: 8px; }
 .qr-note { color: var(--muted); font-size: 11px; margin-top: 4px; line-height: 1.4; max-width: 180px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 8px 0 0; list-style: none; }
 .chips li { background: #0f1424; border: 1px solid var(--border); color: var(--text); padding: 6px 10px; border-radius: 14px; font-size: 13px; }
+#project-filters { margin: 8px 0 12px; }
+#project-filters .chips li.active { background: var(--accent); color: #0b0e14; }
 @keyframes pulse-light {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
@@ -57,6 +59,13 @@ h1 { color: var(--text); font-size: 28px; margin: 0 0 6px; }
 details.card { padding: 0; }
 details.card > summary { cursor: pointer; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 14px 16px; list-style: none; }
 details.card > summary::-webkit-details-marker { display:none; }
+
+/* סגנונות לכרטיסי קטגוריה */
+details.category-card { margin-bottom: 26px; }
+details.category-card > summary { background-color: #1a2035; }
+details.category-card .proj-title { font-size: 20px; }
+details.category-card > .content { padding-top: 10px; }
+.project-in-category { margin: 10px 0; border-top: 1px solid var(--border); padding-top: 12px; }
 .proj-title { font-weight: 600; color: var(--text); }
 .proj-sub { color: var(--muted); font-size: 13px; }
 .highlights { color: var(--accent); font-size: 12px; }
@@ -95,15 +104,23 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
   .header { flex-direction: column; text-align: center; gap: 12px; }
   .contact { justify-content: center; }
   .qr-pair { flex-direction: column; gap: 18px; }
-  .qr img { width: 100px; height: 100px; }
+  .qr img { width: 130px; height: 130px; }
   details.card > summary { grid-template-columns: 1fr; text-align: center; gap: 6px; }
   .highlights { justify-content: center; }
+  .qr-container {
+        text-align: center;
+        margin-bottom: 1rem;
+}
 }
 
 /* פרטי קשר */
 .contact { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; color: var(--muted); font-size: 13px; }
 .contact span { background:#0f1424; border:1px solid var(--border); padding:6px 10px; border-radius:8px; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.bottom-sections { display: block; margin: 24px 0 36px; }
+.bottom-sections .card { margin: 0 0 24px; }
 </style>
+<link rel="stylesheet" href="styles/platform-badges.css">
 </head>
 <body>
 <div class="container">
@@ -112,19 +129,28 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
     <h1>[שם מלא]</h1>
     <div class="subtitle">יועץ AI | ארכיטקט מערכות</div>
     <div class="contact">
-      <span>טלפון: [מספר]</span>
-      <span>דוא"ל: [כתובת]</span>
-      <span>מיקום: [עיר]</span>
+      <span>טלפון: <a href="tel:[מספר]" style="color: var(--muted); text-decoration: none;">[מספר]</a></span>
+      <span>דוא"ל: <a href="mailto:Dror201031@Gmail.com" style="color: var(--muted); text-decoration: none;">Dror201031@Gmail.com</a></span>
+      <span>מגורים: באר יעקב</span>
     </div>
   </div>
-  
 </div>
-
+<div class="section">
+  <h3>מסלולי תפקיד</h3>
+  <ul class="chips">
+    <li>יועץ AI</li>
+    <li>ארכיטקט פתרונות</li>
+    <li>מפתח Front‑End תלת‑ממד</li>
+    <li>מוביל הטמעה והדרכה</li>
+    <li>מפתח אינטגרציות</li>
+  </ul>
+</div>
 <div class="section">
   <h3>פרופיל מקצועי</h3>
   <ul class="bullets">
-    <li>ניסיון בפיתוח והטמעה של מערכות AI מקצה לקצה.</li>
-    <li>ניהול פרויקטים טכניים, תיעוד ומדידת ביצועים.</li>
+    <li><strong>מנתח מערכות וארכיטקט AI</strong> עם ניסיון בהובלת פרויקטים מקצה לקצה, החל משלב <strong>האפיון והניתוח</strong> ועד למוצר הפעיל.</li>
+    <li>מומחיות טכנולוגית ב-Generative AI, Computer Vision, ו-WebGL, עם יכולת מוכחת <strong>לתרגם צרכים עסקיים</strong> לפתרונות טכנולוגיים חדשניים.</li>
+    <li>ניהול פרויקטים טכנולוגיים מורכבים תוך התמקדות בחדשנות, אופטימיזציה של משאבים ועמידה ביעדים.</li>
   </ul>
 </div>
 
@@ -143,15 +169,148 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
     <li>Video Processing</li>
     <li>API Integration</li>
     <li>Server Management</li>
+    <li>Low-Code Development</li>
+    <li>Stable Diffusion</li>
+    <li>פיתוח Full-Stack</li>
+    <li>אופטימיזציית חומרה</li>
   </ul>
 </div>
 
 <div class="section">
   <h3>פרויקטים נבחרים</h3>
+  <div id="project-filters"></div>
   <div id="projects-list"></div>
   <!-- Fallback מקומי לפתיחה דרך file:// -->
   <div id="projects-fallback" style="display:none">
-    <details class="card">
+    <!-- תחילת פרויקט ממשק GAMMA3N -->
+    <details class="card" data-category="project">
+      <summary>
+        <div>
+          <div class="proj-title">ממשק GAMMA3N: ממשק שליטה מתקדם למודל שפה (2025)</div>
+          <div class="proj-sub">פיתוח ממשק משתמש מורכב עם שליטה פרטנית במודל GAMMA3N המקומי</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge windows" title="Windows">Windows</span>
+        </div>
+        <div class="highlights">GAMMA3N • ממשק מתקדם • אופטימיזציה מקומית</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח ממשק משתמש מתקדם ואינטואיטיבי למודל השפה GAMMA3N המופעל מקומית על המחשב, ללא תלות בשירותי ענן.</li>
+          <li>בניית מערכת בקרה מתקדמת המאפשרת שליטה פרטנית בפרמטרים של המודל, כולל הגדרות בסיסיות ומתקדמות.</li>
+          <li>שילוב מערכת היסטוריה לשמירה ומעקב אחר שיחות קודמות עם המודל.</li>
+          <li>יישום ממשק ויזואלי עשיר עם אפקטים גרפיים (כמו רקע כוכבים) לשיפור חוויית המשתמש.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">ממשק המשתמש</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://youtu.be/zK0MEXqo75U" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://youtu.be/zK0MEXqo75U" alt="QR - סרטון הדגמה">
+              </a>
+              <div class="label">סרטון הדגמה</div>
+              <div class="qr-note">לחץ או סרוק לצפייה בסרטון ביוטיוב.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card" data-category="tool">
+      <summary>
+        <div>
+          <div class="proj-title">יוצר קליפים אוטומטי (2025)</div>
+          <div class="proj-sub">ממשק Web מקומי ליצירת קליפים קצרים מתמונה/וידאו עם אוטומציית עריכה</div>
+        </div>
+        <div class="highlights">Computer Vision • עיבוד וידאו • אוטומציה</div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge mobile" title="Mobile">Mobile</span>
+        </div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>ייצור קליפים קצרים בלחיצה: חיתוך, מעברונים, טקסט דינמי והטמעת לוגו.</li>
+          <li>תמיכה בקלטים: תמונות/וידאו, בחירת אורך יעד ומוזיקת רקע.</li>
+          <li>ידידותי לעברית וייצוא מהיר לשיתוף.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">פתח את הממשק</div>
+          <div class="links">
+            <a class="btn" href="file:///C:/Users/Avatar001/CascadeProjects/MENIVIDEOCLIPAPP/יוצר קליפים/auto_clip_generator.html" target="_blank" rel="noopener">פתיחה מקומית</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    
+    <!-- תחילת פרויקט Genie -->
+    <details class="card" data-category="product">
+      <summary>
+        <div>
+          <div class="proj-title">@Genie: טייס המשנה שלך בוואטסאפ (2025)</div>
+          <div class="proj-sub">אינטגרציה של מודל GAMMA מקומי עם וואטסאפ ליצירת עוזר AI זמין בחינם</div>
+        </div>
+        <div class="highlights">GAMMA API • התקנה מקומית • פרטיות מלאה • גישה חינמית</div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge whatsapp" title="WhatsApp">WhatsApp</span>
+          <span class="badge windows" title="Windows">Windows</span>
+        </div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח ממשק שמחבר את מודל ה-GAMMA המקומי לוואטסאפ, המאפשר לתייג את @Genie ולקבל תשובות מידיות ישירות בצ'אט.</li>
+          <li>בניית מערכת שפועלת במלואה על המחשב האישי, תוך ניצול כרטיס המסך להאצת ביצועים ללא העברת מידע לענן.</li>
+          <li>תכנון שלושה מצבי הפעלה: מצב קבוצתי, מצב אישי, ומצב שיחה (לשני אנשים בצ'אט).</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">דף המוצר</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://theicd.github.io/Genie-Helper-Ai/" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://theicd.github.io/Genie-Helper-Ai/" alt="QR - דף המוצר">
+              </a>
+              <div class="label">דף המוצר</div>
+              <div class="qr-note">סרוק או לחץ לפתיחת דף המוצר של Genie.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://theicd.github.io/Genie-Helper-Ai/" target="_blank" rel="noopener">צפה בדף המוצר</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    
+    <details class="card" data-category="product">
+      <summary>
+        <div>
+          <div class="proj-title">יצירת קסם דיגיטלי: קורס AI מעשי (2025)</div>
+          <div class="proj-sub">הנחיית סדנה פרונטלית ליצירת תוכן עם בינה מלאכותית</div>
+        </div>
+        <div class="highlights">הדרכה פרונטלית • פיתוח סילבוס • הנגשת AI</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח והעברת קורס פרונטלי מקיף (12 שעות) המלמד שימוש מעשי בכלי AI ליצירת תוכן, וידאו וחוויות אינטראקטיביות.</li>
+          <li>בניית סילבוס מקורי המכסה יצירת טקסט (GPT), תמונה (Midjourney/DALL-E), וידאו (Runway/Pika) ופיתוח Low-Code.</li>
+          <li>הדרכת קהל מגוון ללא רקע טכני, תוך מתן ליווי אישי בפרויקטי גמר והדגמת יכולות תקשורת והנגשת ידע.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">דף הקורס</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://theicd.github.io/my-landing-page/index11.html" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://theicd.github.io/my-landing-page/index11.html" alt="QR - דף הקורס">
+              </a>
+              <div class="label">דף הקורס</div>
+              <div class="qr-note">קוד לדף הנחיתה של הקורס, כולל סילבוס מלא, דוגמאות ופרטי הרשמה.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://theicd.github.io/my-landing-page/index11.html" target="_blank" rel="noopener">צפה בדף הקורס</a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details class="card" data-category="project">
       <summary>
         <div>
           <div class="proj-title">SKYNET (2019–2020)</div>
@@ -170,42 +329,43 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
           <div class="qr-pair">
             <div class="qr">
               <a href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.mql5.com/en/users/theicd" alt="QR - קישור לדף MQL5">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.mql5.com/en/users/theicd" alt="QR - דף MQL5">
               </a>
               <div class="label">MQL5</div>
               <div class="qr-note">קוד לכניסה לדף הפרופיל ב‑MQL5: מעקב ביצועים, גרפים והיסטוריית תוצאות.</div>
             </div>
             <div class="qr">
               <a href="https://c.mql5.com/1/202/huye_mb8i.png" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://c.mql5.com/1/202/huye_mb8i.png" alt="QR - דוח פעילות (תמונה)">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://c.mql5.com/1/202/huye_mb8i.png" alt="QR - דוח פעילות">
               </a>
               <div class="label">דוח פעילות</div>
               <div class="qr-note">קוד לפתיחת תמונת דוח פעילות: גרף צמיחה וסיכום ביצועים.</div>
             </div>
           </div>
-          <div class="links">
-            <a class="btn" href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">דף MQL5</a>
-            <a class="btn" href="https://c.mql5.com/1/202/huye_mb8i.png" target="_blank" rel="noopener">דוח פעילות</a>
-          </div>
         </div>
         <div class="infographics">
           <div class="infographic-row">
             <div class="infographic-item">
-              <h4>צמיחת תיק השקעות</h4>
               <div class="chart">
-                <div class="bar" style="height: 36px; background: #3498db; width: 20%;">$2K</div>
-                <div class="bar" style="height: 36px; background: #2ecc71; width: 100%;">$12K</div>
+                <div class="gauge">$2K→$12K</div>
+                <div>צמיחת תיק השקעות</div>
               </div>
             </div>
             <div class="infographic-item">
-              <h4>חיסכון במשאבים</h4>
-              <div class="gauge" style="width: 93%;">93%</div>
+              <div class="chart">
+                <div class="gauge">93%</div>
+                <div>חיסכון במשאבים</div>
+              </div>
             </div>
           </div>
         </div>
+        <div class="links">
+          <a class="btn" href="https://www.mql5.com/en/users/theicd" target="_blank" rel="noopener">דף MQL5</a>
+          <a class="btn" href="https://c.mql5.com/1/202/huye_mb8i.png" target="_blank" rel="noopener">דוח פעילות</a>
+        </div>
       </div>
     </details>
-    <details class="card">
+    <details class="card" data-category="project">
       <summary>
         <div>
           <div class="proj-title">Organic Smart Garden & AI Grow Table (2021–2023)</div>
@@ -225,14 +385,14 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
           <div class="qr-pair">
             <div class="qr">
               <a href="https://www.youtube.com/watch?v=0L_H2eNVt9Y" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=0L_H2eNVt9Y" alt="QR - סרטון הדגמה למערכת גידול">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=0L_H2eNVt9Y" alt="QR - סרטון הדגמה למערכת גידול">
               </a>
               <div class="label">מערכת גידול</div>
               <div class="qr-note">סרטון הדגמה למערכת הגידול האורגנית, יכולותיה ויתרונותיה.</div>
             </div>
             <div class="qr">
               <a href="https://www.youtube.com/watch?v=ay7qSqfipug" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=ay7qSqfipug" alt="QR - קונספט שולחן AI">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=ay7qSqfipug" alt="QR - קונספט שולחן AI">
               </a>
               <div class="label">קונספט שולחן AI</div>
               <div class="qr-note">הצגת הקונספט לשולחן הגידול החכם, המשלב יכולות AI.</div>
@@ -245,7 +405,7 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
         </div>
       </div>
     </details>
-    <details class="card">
+    <details class="card" data-category="project">
       <summary>
         <div>
           <div class="proj-title">קפטן סטורי (Captain Story) (2023-2024)</div>
@@ -265,14 +425,14 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
           <div class="qr-pair">
             <div class="qr">
               <a href="https://www.youtube.com/watch?v=bh22GWArSb0" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=bh22GWArSb0" alt="QR - הדגמת קפטן סטורי">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=bh22GWArSb0" alt="QR - הדגמת קפטן סטורי">
               </a>
               <div class="label">הדגמת הסוכן</div>
               <div class="qr-note">סרטון המציג את סוכן ה-AI "קפטן סטורי" ויכולותיו.</div>
             </div>
             <div class="qr">
               <a href="https://www.youtube.com/watch?v=QPiwTJug2aA" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://www.youtube.com/watch?v=QPiwTJug2aA" alt="QR - דוגמת תוצר: כפר הממתקונים">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.youtube.com/watch?v=QPiwTJug2aA" alt="QR - דוגמת תוצר: כפר הממתקונים">
               </a>
               <div class="label">תוצר לדוגמה</div>
               <div class="qr-note">"כפר הממתקונים" - קונספט לסדרה שנוצר באמצעות קפטן סטורי.</div>
@@ -285,11 +445,15 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
         </div>
       </div>
     </details>
-    <details class="card">
+    <details class="card" data-category="tool">
       <summary>
         <div>
           <div class="proj-title">Effect-Cube (2024)</div>
           <div class="proj-sub">פלטפורמה להפיכת תמונות סטטיות לווידאו דינמי</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge mobile" title="Mobile">Mobile</span>
         </div>
         <div class="highlights">Three.js • WebGL • עיבוד וידאו</div>
       </summary>
@@ -306,7 +470,7 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
           <div class="qr-pair single">
             <div class="qr">
               <a href="https://theicd.github.io/Effect-Cube/index3d.html" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://theicd.github.io/Effect-Cube/index3d.html" alt="QR - קישור לפרויקט Effect-Cube">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://theicd.github.io/Effect-Cube/index3d.html" alt="QR - קישור לפרויקט Effect-Cube">
               </a>
               <div class="label">צפה בפרויקט</div>
               <div class="qr-note">קישור לאתר הפעיל של Effect-Cube.</div>
@@ -318,11 +482,15 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
         </div>
       </div>
     </details>
-    <details class="card">
+    <details class="card" data-category="tool">
       <summary>
         <div>
           <div class="proj-title">Dreamy AI Toons (2024)</div>
           <div class="proj-sub">פלטפורמה ליצירת דמויות מצוירות באמצעות AI</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge mobile" title="Mobile">Mobile</span>
         </div>
         <div class="highlights">OpenAI API • Front-End • מודל תשלום</div>
       </summary>
@@ -338,7 +506,7 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
           <div class="qr-pair single">
             <div class="qr">
               <a href="https://theicd.github.io/DreamyAIToons/" target="_blank" rel="noopener">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://theicd.github.io/DreamyAIToons/" alt="QR - קישור לפרויקט Dreamy AI Toons">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://theicd.github.io/DreamyAIToons/" alt="QR - קישור לפרויקט Dreamy AI Toons">
               </a>
               <div class="label">צפה בפרויקט</div>
               <div class="qr-note">קישור לאתר הפעיל של Dreamy AI Toons.</div>
@@ -350,25 +518,126 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
         </div>
       </div>
     </details>
+
+    <details class="card" data-category="tool">
+      <summary>
+        <div>
+          <div class="proj-title">PIXEL‑ISR: מנוע חיפוש מדיה עם תרגום אוטומטי (2025)</div>
+          <div class="proj-sub">חיפוש בעברית → תרגום לאנגלית → תוצאות מדויקות של תמונות/וידאו לשימוש חופשי</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge mobile" title="Mobile">Mobile</span>
+        </div>
+        <div class="highlights">תרגום אוטומטי • Pixabay API • חיפוש תמונות/וידאו</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>מנגנון תרגום עברית→אנגלית אוטומטי המאפשר חיפוש בעברית והחזרת תוצאות רלוונטיות ממקורות בינלאומיים.</li>
+          <li>החזרת תמונות וסרטוני וידאו באיכות גבוהה לשימוש חופשי (Pixabay — רישיון חינמי לשימוש).</li>
+          <li>ממשק מהיר עם תצוגה מיידית, שיתוף מהיר וקישורים ישירים להורדה/שימוש.</li>
+          <li>כלי חינמי ונגיש ליצירת מצגות, אתרים ותוכן שיווקי ביום־יום.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">קישור לפרויקט</div>
+          <div class="qr-pair single">
+            <div class="qr">
+              <a href="https://theicd.github.io/PIXEL-ISR/" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://theicd.github.io/PIXEL-ISR/" alt="QR - קישור לפרויקט PIXEL-ISR">
+              </a>
+              <div class="label">צפה בפרויקט</div>
+              <div class="qr-note">מנוע חיפוש מדיה עם תרגום אוטומטי בעברית.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://theicd.github.io/PIXEL-ISR/" target="_blank" rel="noopener">לצפייה בפרויקט</a>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" data-category="tool">
+      <summary>
+        <div>
+          <div class="proj-title">המורה הדיגיטלי — Google Gemini (2025)</div>
+          <div class="proj-sub">מורה פרטי חינמי עם תמיכה בתמונות/וידאו ומפתח API חינמי של Google</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge mobile" title="Mobile">Mobile</span>
+        </div>
+        <div class="highlights">Google Gemini • API חינמי • תמונות/וידאו בממשק</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>ממשק למידה אישי עם בחירת כיתה, מקצוע וסגנון הוראה.</li>
+          <li>שילוב מפתח API חינמי של Google לשימוש יומי במודל Gemini (מכסה יומית, עשויה להשתנות).</li>
+          <li>תמיכה בהצגת תמונות וסרטונים בממשק, כולל חיפוש מדיה.</li>
+          <li>שמירת היסטוריית למידה והתאמות מתקדמות (מודל, יצירתיות, אורך תשובה).</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">קישורים</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://aistudio.google.com/app/apikey" alt="QR - השגת מפתח API של Google">
+              </a>
+              <div class="label">השג מפתח API</div>
+              <div class="qr-note">קישור רשמי של Google ליצירת מפתח API חינמי.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="file:///C:/Users/Avatar001/CascadeProjects/GOGGLEAPIFREE/index.html" target="_blank" rel="noopener">פתח את הממשק מקומית</a>
+            <a class="btn" href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">השג מפתח API</a>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" data-category="project">
+      <summary>
+        <div>
+          <div class="proj-title">Art-Gen: שרת AI אישי ליצירת תמונות (2025)</div>
+          <div class="proj-sub">הקמת שרת Stable Diffusion מקומי על חומרה ותיקה עם גישה מרחוק</div>
+        </div>
+        <div class="platform-badges" aria-label="פלטפורמות נתמכות">
+          <span class="badge web" title="Web">Web</span>
+          <span class="badge windows" title="Windows">Windows</span>
+        </div>
+        <div class="highlights">Stable Diffusion • פיתוח Full-Stack • אופטימיזציית חומרה</div>
+      </summary>
+      <div class="content">
+        <ul class="bullets">
+          <li>פיתוח מערכת התקנה אוטומטית (Installer) להקמת סביבת Stable Diffusion Tiny מקומית על כל מחשב.</li>
+          <li>בניית ממשק משתמש (UI) אינטואיטיבי להפעלת המודל, כולל התאמת פרמטרים ליצירת תמונות.</li>
+          <li>ביצוע אופטימיזציה ובדיקות תאימות למגוון רחב של כרטיסי מסך (NVIDIA ו-AMD), כולל חומרה ותיקה.</li>
+          <li>הקמת "גשר" המאפשר גישה מאובטחת מרחוק לממשק המקומי דרך האינטרנט, והפיכת המחשב האישי לשרת AI נגיש.</li>
+          <li>הדגמת יכולת להקים תשתית AI בעלות אפסית, תוך שימוש יעיל במשאבים קיימים וללא עלויות ענן.</li>
+        </ul>
+        <div class="proj-actions">
+          <div class="label">הדגמת וידאו</div>
+          <div class="qr-pair">
+            <div class="qr">
+              <a href="https://www.facebook.com/watch/?v=23992457903752775" target="_blank" rel="noopener">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D23992457903752775" alt="QR - סרטון הדגמה">
+              </a>
+              <div class="label">סרטון הדגמה</div>
+              <div class="qr-note">סרוק או לחץ לצפייה בסרטון המציג את המערכת בפעולה.</div>
+            </div>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://www.facebook.com/watch/?v=23992457903752775" target="_blank" rel="noopener">לצפייה בסרטון</a>
+          </div>
+        </div>
+      </div>
+    </details>
+
   </div>
 </div>
 
-<hr class="sep" />
+  <div id="extra-categories"></div>
+</div> <!-- Closing .container -->
 
-<div class="section">
-  <h3>השכלה</h3>
-  <ul class="bullets">
-    <li>[מוסד] — [תואר] ([שנים])</li>
-  </ul>
-  
-  <h3>שפות</h3>
-  <ul class="chips">
-    <li>[עברית]</li>
-    <li>[אנגלית]</li>
-  </ul>
-</div>
-
-</div>
 <script>
   (function(){
     const toggleAll = (open) => document.querySelectorAll('details').forEach(d => d.open = open);
@@ -376,27 +645,203 @@ hr.sep { border: none; height: 1px; background: var(--border); margin: 18px 0; }
     window.addEventListener('afterprint', () => toggleAll(false));
     // טעינת כרטיסי פרויקטים מקבצים חיצוניים
     document.addEventListener('DOMContentLoaded', async () => {
-      const targets = ['projects/skynet.html', 'projects/organic-smart-garden.html', 'projects/captain-story.html', 'projects/dreamy-ai-toons.html', 'projects/effect-cube.html'];
+      const projects = [
+        'projects/project_gamma3n_interface.html',
+        'projects/auto-clip-generator.html',
+        'projects/project_genie.html',
+        'projects/project_whatsapp_extension.html',
+        'projects/project_browser_extension.html',
+        'projects/project_gamma3n_chat.html',
+        'projects/project_art_gen.html', 
+        'projects/project_ai_course.html', 
+        'projects/captain-story.html', 
+        'projects/dreamy-ai-toons.html', 
+        'projects/project_pixel_isr.html', 
+        'projects/project_google_digital_teacher.html', 
+        'projects/effect-cube.html', 
+        'projects/organic-smart-garden.html'
+      ];
+      const categoryMap = {
+        'projects/effect-cube.html': 'tool',
+        'projects/project_pixel_isr.html': 'tool',
+        'projects/project_google_digital_teacher.html': 'tool',
+        'projects/dreamy-ai-toons.html': 'tool',
+        'projects/project_genie.html': 'product',
+        'projects/project_ai_course.html': 'product',
+        'projects/project_art_gen.html': 'project',
+        'projects/project_gamma3n_interface.html': 'project',
+        'projects/auto-clip-generator.html': 'tool',
+        'projects/organic-smart-garden.html': 'project',
+        'projects/captain-story.html': 'project',
+        'projects/project_gamma3n_chat.html': 'project',
+        'projects/project_browser_extension.html': 'project',
+        'projects/project_whatsapp_extension.html': 'project'
+      };
       const host = document.getElementById('projects-list');
       const fallback = document.getElementById('projects-fallback');
       const useFallback = location.protocol === 'file:';
       if (useFallback) {
         host.innerHTML = fallback.innerHTML;
-        return;
-      }
-      for (const url of targets) {
-        try {
-          const res = await fetch(url);
-          if (!res.ok) throw new Error('fetch failed');
-          const html = await res.text();
-          const tmp = document.createElement('div');
-          tmp.innerHTML = html;
-          host.append(...tmp.childNodes);
-        } catch(e) {
+      } else {
+        for (const url of projects) {
+          try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`fetch failed for ${url}`);
+            const html = await res.text();
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            const cat = categoryMap[url] || 'project';
+            tmp.querySelectorAll('details.card').forEach(d => d.setAttribute('data-category', cat));
+            host.append(...tmp.childNodes);
+          } catch(e) {
+            console.error(`Error loading project file: ${e.message}`);
+          }
+        }
+        
+        // אם לא נטענו פרויקטים בכלל, השתמש בגיבוי המקומי
+        if (host.children.length === 0) {
           host.innerHTML = fallback.innerHTML;
-          break;
         }
       }
+
+      // הוספת קטגוריות תחתונות: כלים ופלטפורמות + מילות מפתח (ATS)
+      const extraHost = document.getElementById('extra-categories');
+      if (extraHost) {
+        try {
+          const res = await fetch('sections/extra_categories.html');
+          if (!res.ok) throw new Error('fetch extra failed');
+          extraHost.innerHTML = await res.text();
+        } catch (e) {
+          extraHost.innerHTML = `
+            <div class="section">
+              <h3>כלים ופלטפורמות</h3>
+              <ul class="chips">
+                <li>Hugging Face (Models, Spaces, Inference)</li>
+                <li>OpenAI API</li>
+                <li>FastAPI</li>
+                <li>Node.js</li>
+                <li>Three.js & WebGL</li>
+                <li>Docker</li>
+                <li>Linux/Windows</li>
+                <li>Git / GitHub</li>
+                <li>GitHub Pages</li>
+                <li>Stable Diffusion</li>
+                <li>WhatsApp API / Integrations</li>
+                <li>Browser Extensions</li>
+                <li>MediaRecorder API</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>מודלים — מקומיים (On‑Prem/Edge)</h3>
+              <ul class="chips">
+                <li>GAMMA3N (LLM מקומי)</li>
+                <li>SDXL Base</li>
+                <li>SDXL VAE</li>
+                <li>LoRA (SDXL)</li>
+                <li>Prompt Expansion</li>
+                <li>Wan 2.1 I2V (14B) + CausVid LoRA</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>מודלים — ענן/גדולים (Cloud/Large)</h3>
+              <ul class="chips">
+                <li>SWE‑1</li>
+                <li>GPT‑4o</li>
+                <li>Claude 4</li>
+                <li>Gemini 2.5 Pro</li>
+                <li>DeepSeek‑R1</li>
+                <li>Grok‑3</li>
+                <li>Qwen3‑Coder</li>
+                <li>Kimi K2</li>
+                <li>Midjourney</li>
+                <li>DALL·E</li>
+                <li>Kling AI</li>
+                <li>Qwen3‑Vision</li>
+              </ul>
+            </div>
+            <!-- הסעיף 'סרטוני השוואת מודלים' הוסר לפי בקשה -->
+            <div class="section">
+              <h3>השכלה ותעודות</h3>
+              <ul class="bullets">
+                <li>קורס מנתחי מערכות מידע — ג'ון ברייס, 2010</li>
+                <li>קורס טכנאי PC ורשתות — מכללת סיוון, 2004</li>
+                <li>DeepLearning.AI — Prompt Engineering for Developers (OpenAI)</li>
+                <li>DeepLearning.AI — Generative AI with LLMs (Coursera)</li>
+                <li>Google Cloud — Generative AI on Vertex AI (Skills Boost)</li>
+                <li>Microsoft — Azure AI Fundamentals (AI‑900)</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>מילות מפתח (ATS)</h3>
+              <ul class="chips">
+                <li>יועץ AI</li>
+                <li>ארכיטקט פתרונות</li>
+                <li>Generative AI</li>
+                <li>LLM</li>
+                <li>NLP</li>
+                <li>Computer Vision</li>
+                <li>RAG</li>
+                <li>Prompt Engineering</li>
+                <li>MLOps</li>
+                <li>On‑Prem / Edge</li>
+                <li>Cloud</li>
+                <li>AWS</li>
+                <li>Azure</li>
+                <li>GCP</li>
+                <li>Stable Diffusion</li>
+                <li>Chatbot</li>
+                <li>WhatsApp Integration</li>
+                <li>Browser Extension</li>
+                <li>WebGL / Three.js</li>
+                <li>Video Processing</li>
+                <li>Training & Enablement</li>
+                <li>ROI</li>
+                <li>KPI</li>
+                <li>Change Management</li>
+                <li>Cost Reduction</li>
+                <li>MQL5</li>
+                <li>Trading Automation</li>
+              </ul>
+            </div>
+          `;
+        }
+      }
+
+      // בניית סרגל סינון קטגוריות מעל רשימת הפרויקטים
+      const buildFilters = () => {
+        const container = document.getElementById('project-filters') || document.createElement('div');
+        if (!container.id) container.id = 'project-filters';
+        container.innerHTML = '';
+        const ul = document.createElement('ul');
+        ul.className = 'chips';
+        const filters = [
+          { key: 'all', label: 'הכל' },
+          { key: 'tool', label: 'כלים (אונליין)' },
+          { key: 'product', label: 'מוצרים' },
+          { key: 'project', label: 'פרויקטים' }
+        ];
+        const applyFilter = (cat) => {
+          host.querySelectorAll('details.card').forEach(card => {
+            const c = card.getAttribute('data-category') || 'project';
+            card.style.display = (cat === 'all' || c === cat) ? '' : 'none';
+          });
+          // עדכון מצב active
+          ul.querySelectorAll('li').forEach(li => li.classList.toggle('active', li.dataset.cat === cat));
+        };
+        filters.forEach(f => {
+          const li = document.createElement('li');
+          li.textContent = f.label;
+          li.dataset.cat = f.key;
+          li.setAttribute('role', 'button');
+          li.addEventListener('click', () => applyFilter(f.key));
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+        if (!container.parentNode) host.parentNode.insertBefore(container, host);
+        applyFilter('all');
+      };
+
+      buildFilters();
     });
   })();
   </script>

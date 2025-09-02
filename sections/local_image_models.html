@@ -1,0 +1,22 @@
+<div class="section">
+  <h3>מודלים — יצירת תמונה (מקומי)</h3>
+  <ul class="bullets">
+    <li><strong>SDXL Base</strong>: realisticStockPhoto_v20 (מודל בסיס מקומי)</li>
+    <li><strong>SDXL VAE</strong>: sdxl_vae (פענוח/קידוד באיכות גבוהה)</li>
+    <li><strong>Prompt Expansion</strong>: מנוע הרחבת פרומפט ייעודי</li>
+    <li><strong>LoRA</strong>: טעינה דינמית בזמן ריצה (לדוגמה: FILM_PHOTOGRAPHY_STYLE)</li>
+    <li><strong>ControlNet</strong>: תמיכה זמינה (כבוי כברירת מחדל)</li>
+    <li><strong>Refiner</strong>: לא בשימוש כברירת מחדל לחיסכון ב‑VRAM/זמן</li>
+  </ul>
+</div>
+<div class="section">
+  <h3>אופטימיזציות ביצועים (8GB • ~דקה)</h3>
+  <ul class="bullets">
+    <li><strong>VRAM Offloading</strong> אגרסיבי</li>
+    <li><strong>CLIP Skip</strong> = 2</li>
+    <li><strong>Sampler</strong>: DPM++ 2M SDE + Karras (~10 צעדים)</li>
+    <li><strong>Caching</strong> לקידוד טקסט (CLIP)</li>
+    <li><strong>רזולוציה</strong> מותאמת SDXL (למשל 896×1152)</li>
+    <li><strong>fp16</strong> כשזמין, <strong>Disable Preview</strong> בזמן הסמפול</li>
+  </ul>
+</div>

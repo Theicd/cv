@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>קורות חיים — יועץ AI להטמעה בארגונים</title>
+  <meta name="description" content="יועץ AI להטמעה בארגונים לא-טכנולוגיים: חסכון בעלויות באמצעות מודלים מקומיים והטמעה חכמה בענן (Hugging Face), הדרכות, ופרויקטים עם השפעה עסקית מוכחת.">
+  <style>
+    :root { --text:#e6e9f2; --muted:#9aa4b2; --accent:#66b3ff; --bg:#0b1020; --border:#27324a; --surface:#0f1528; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Arial, Helvetica, "Noto Sans Hebrew", sans-serif; color:var(--text); background:var(--bg); line-height:1.5; }
+    .page { max-width: 860px; margin: 0 auto; padding: 28px 18px 60px; }
+    h1,h2,h3 { margin: 0 0 8px; font-weight: 700; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 18px; border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-top: 18px; }
+    h3 { font-size: 15px; margin-top: 10px; }
+    p { margin: 0 0 8px; color: var(--text); }
+    .muted { color: var(--muted); }
+    .row { display:flex; gap:16px; }
+    .col { flex:1; }
+    ul { margin: 6px 0 8px 0; padding: 0 18px 0 0; }
+    li { margin: 4px 0; }
+    .chip-list { display:flex; flex-wrap: wrap; gap:6px; margin-top: 6px; }
+    .chip { border:1px solid var(--border); padding:4px 8px; border-radius: 999px; font-size: 12px; background:var(--surface); }
+    .header { display:flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .title { display:flex; flex-direction:column; }
+    .role { color: var(--accent); font-weight: 600; }
+    .contact { text-align:left; font-size: 13px; }
+    a { color: var(--accent); text-decoration: none; }
+    .pill { display:inline-block; background:rgba(102,179,255,0.12); color:#cfe6ff; border:1px solid rgba(102,179,255,0.35); padding:2px 8px; border-radius:999px; font-size:12px; margin-inline-start:6px; }
+    .block { margin-top: 12px; }
+    .kv { display:flex; gap:8px; flex-wrap: wrap; }
+    .kv .item { border:1px solid var(--border); padding:8px 10px; border-radius:8px; font-size: 13px; background:var(--surface); }
+    .project { border:1px solid var(--border); border-radius:8px; padding:10px; margin:10px 0; background:var(--surface); }
+    .project .meta { font-size: 12px; color: var(--muted); }
+    .impact { font-weight:600; }
+    .method li { margin: 2px 0; }
+    .section-note { font-size: 12px; color: var(--muted); }
+    @media print {
+      :root { --text:#111; --muted:#555; --accent:#0b6bcb; --bg:#fff; --border:#e6e6e6; --surface:#fcfcfc; }
+      body { background:#fff; color:#111; }
+      .page { padding: 0 0 0 0; }
+      a { color: inherit; text-decoration: none; }
+      .section-note { color:#666; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- Header -->
+    <section class="header">
+      <div class="title">
+        <h1>[שם מלא]</h1>
+        <div class="role">יועץ AI (Generative AI, NLP, Computer Vision) — הטמעה חסכונית On‑Prem/Cloud, MLOps</div>
+        <div class="muted">ממוקד ערך עסקי, KPI/ROI, שינוי תהליכים והטמעה הדרגתית בארגונים מסורתיים</div>
+      </div>
+      <div class="contact">
+        <div><strong>אימייל:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></div>
+        <div><strong>טלפון:</strong> 05X-XXXXXXX</div>
+        <div><strong>לינקדאין:</strong> <a href="#" rel="noopener" target="_blank">linkedin.com/in/yourprofile</a></div>
+        <div><strong>אתר/פורטפוליו:</strong> <a href="#" rel="noopener" target="_blank">your-site.example</a></div>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="block">
+      <h2>תמצית מנהלים</h2>
+      <p>
+        מומחה להטמעת פתרונות AI בארגונים לא-טכנולוגיים, עם ניסיון בהפיכת יכולות GenAI ו-Computer Vision לפתרונות יישומיים וזמינים לצוותים עסקיים.
+        משלב מודלים מקומיים לחיסכון בעלויות לצד פריסה חכמה בענן/פלטפורמות כגון Hugging Face, תוך דגש על הדרכה, שינוי תהליכים ומדידת תוצאות.
+      </p>
+      <div class="kv">
+        <div class="item">חיסכון תפעולי דרך ריצה מקומית היכן שנכון</div>
+        <div class="item">פריסה בענן/Hub (Hugging Face, Spaces, Inference)</div>
+        <div class="item">פיילוטים מהירים והטמעה הדרגתית</div>
+        <div class="item">הדרכות מותאמות לעובדים ללא רקע טכני</div>
+      </div>
+    </section>
+
+    <!-- Skills grouped -->
+    <section class="block">
+      <h2>מיומנויות עיקריות</h2>
+      <h3>עסקיות והטמעה</h3>
+      <ul>
+        <li>זיהוי הזדמנויות ויעדים עסקיים, בניית KPI ו-ROI</li>
+        <li>הטמעה ארגונית הדרגתית: פיילוט → הדרכה → סקייל</li>
+        <li>הנגשת טכנולוגיה לצוותים לא-טכנולוגיים</li>
+      </ul>
+      <h3>AI וטכנולוגיה</h3>
+      <div class="chip-list">
+        <span class="chip">Generative AI</span>
+        <span class="chip">LLM Apps</span>
+        <span class="chip">Computer Vision</span>
+        <span class="chip">RAG</span>
+        <span class="chip">NLP</span>
+        <span class="chip">Prompt Engineering</span>
+        <span class="chip">Python</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Hugging Face</span>
+        <span class="chip">OpenAI API</span>
+        <span class="chip">Stable Diffusion</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Linux/Windows</span>
+        <span class="chip">MLOps</span>
+        <span class="chip">AWS</span>
+        <span class="chip">Azure</span>
+        <span class="chip">GCP</span>
+        <span class="chip">On‑Prem / Edge</span>
+        <span class="chip">CI/CD</span>
+      </div>
+    </section>
+
+    <!-- Local vs Cloud -->
+    <section class="block">
+      <h2>הטמעת AI מקומית וחיצונית</h2>
+      <ul>
+        <li><strong>מקומי (On-Prem / Edge):</strong> ריצה על תחנות עבודה/שרתים קיימים להפחתת עלויות שוטפות ושמירת פרטיות.</li>
+        <li><strong>חיצוני (Hugging Face / ענן):</strong> פריסה מהירה, נגישות ושיתוף, סקייל כשנדרש.</li>
+        <li><strong>בחירה מבוססת-עלות/ביצועים:</strong> התאמת הפתרון לכל תהליך — מקומי כשחסכוני, ענן כשנדרש גמישות וביצועים.</li>
+      </ul>
+      <p class="section-note">ניתן לספק אומדן עלויות/חיסכון לפי Use-Case וציוד קיים בארגון.</p>
+    </section>
+
+    <!-- Experience -->
+    <section class="block">
+      <h2>ניסיון מקצועי</h2>
+      <div class="project">
+        <h3>יועץ AI עצמאי — ארגונים מסורתיים</h3>
+        <div class="meta">2022–היום | הטמעת AI, אוטומציה, הדרכה</div>
+        <ul>
+          <li>הובלת פרויקטי AI מקצה לקצה: מיפוי צרכים → POC → הדרכה → סקייל.</li>
+          <li>הקמת פתרונות מקומיים להפחתת עלויות שוטפות ושיפור פרטיות מידע.</li>
+          <li>פריסה בענן/פלטפורמות (Hugging Face) כשנדרש גמישות וביצועים.</li>
+          <li>מדידה שוטפת של KPI ו-ROI והטמעת שיפורים תהליכיים.</li>
+        </ul>
+      </div>
+      <div class="project">
+        <h3>מרצה ומדריך AI</h3>
+        <div class="meta">הדרכת צוותים ללא רקע טכני | סדנאות מותאמות Use‑Case</div>
+        <ul>
+          <li>בניית מסלולי למידה קצרים עם יישומים ישירים ליום‑יום.</li>
+          <li>הגדלת אימוץ כלים ויצירת שגרות עבודה חדשות עם AI.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Quantified Outcomes -->
+    <section class="block">
+      <h2>הישגים מדידים (דוגמאות למילוי)</h2>
+      <ul>
+        <li>קיצור זמני תגובה (TTR) ב‑[X%] והפחתת עלות חודשית ב‑[Y%] באמצעות ריצה מקומית</li>
+        <li>שיפור דיוק מודלים ב‑[X%] באמצעות RAG/כוונון קל (LoRA/PEFT)</li>
+        <li>זמן הקמה ל‑POC ≤ [X] ימים; מעבר לייצור ≤ [Y] שבועות</li>
+        <li>הדרכת [N] עובדים והגדלת אימוץ כלים ב‑[X%]</li>
+      </ul>
+    </section>
+
+    <!-- Selected Impact Projects -->
+    <section class="block">
+      <h2>פרויקטים נבחרים — השפעה עסקית</h2>
+
+      <div class="project">
+        <h3>Genie — עוזר AI ב-WhatsApp לשירות ותפעול</h3>
+        <div class="meta">כלי עזר לצוותי שירות/תפעול | ריצה מקומית/חיצונית | <span class="pill">הטמעה בארגון מסורתי</span></div>
+        <ul>
+          <li><strong>אתגר:</strong> זמני תגובה ארוכים ועומס על צוות השירות.</li>
+          <li><strong>פתרון:</strong> עוזר שיחה המחובר לידע הארגוני, מייצר תשובות עקביות ובטוחות.</li>
+          <li class="impact"><strong>השפעה:</strong> קיצור זמני תגובה, הורדת עומס ידני, שיפור שביעות רצון לקוחות.</li>
+        </ul>
+        <div class="section-note">קישור לדוגמה/דמו יינתן לפי צורך. ניתן להרצה מקומית לצמצום עלויות.</div>
+      </div>
+
+      <div class="project">
+        <h3>Art‑Gen — שרת תמונות AI מקומי</h3>
+        <div class="meta">Stable Diffusion | שליטה בעלויות | <span class="pill">ריצה ללא ענן</span></div>
+        <ul>
+          <li><strong>אתגר:</strong> עלויות ענן לגרפיקה/קריאייטיב ופרטיות נכסים.</li>
+          <li><strong>פתרון:</strong> הקמת שרת יצירת תמונות מקומי עם תורים ומשתמשים.</li>
+          <li class="impact"><strong>השפעה:</strong> צמצום הוצאות חודשיות ושיפור זמני תגובה לעומת שירותי ענן.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>ממשק GAMMA3N — הנגשת שליטה ב‑LLM</h3>
+        <div class="meta">ממשק הפעלה מתקדם | <span class="pill">גמישות מקומי/ענן</span></div>
+        <ul>
+          <li><strong>אתגר:</strong> שימוש לא עקבי במודלי שפה וניצול חלקי של יכולותיהם.</li>
+          <li><strong>פתרון:</strong> ממשק שליטה פשוט למשתמשי קצה עם פרומפטים מובנים ותבניות תהליך.</li>
+          <li class="impact"><strong>השפעה:</strong> שיפור פרודוקטיביות והאחדת איכות התוצרים; אפשרות לריצה זולה מקומית היכן שמתאים.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>קורס AI פרקטי לארגונים</h3>
+        <div class="meta">הדרכת עובדים | שינוי תהליכים | <span class="pill">הנגשת טכנולוגיה</span></div>
+        <ul>
+          <li><strong>אתגר:</strong> עובדים ללא רקע טכני מתקשים לאמץ כלים חדשים.</li>
+          <li><strong>פתרון:</strong> סדנאות ממוקדות Use‑Cases עם תרגול על נתוני הארגון.</li>
+          <li class="impact"><strong>השפעה:</strong> אימוץ גבוה של כלים ושיפור מדדי יעילות מחלקתיים.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>SKYNET — מערכת קבלת החלטות אוטומטית למסחר</h3>
+        <div class="meta">פיילוט החלטות | <span class="pill">בחינת סיכונים</span></div>
+        <ul>
+          <li><strong>אתגר:</strong> גיבוש תובנות מהיר ושיטתי מנתונים משתנים.</li>
+          <li><strong>פתרון:</strong> פייפליין נתונים ומודלי חיזוי עם ניטור ובקרות.</li>
+          <li class="impact"><strong>השפעה:</strong> שיפור תהליכי קבלת החלטות בתקופת הפעלה מבוקרת (POC).</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- Methodology -->
+    <section class="block">
+      <h2>מתודולוגיית הטמעה בארגונים לא‑טכנולוגיים</h2>
+      <ol class="method">
+        <li><strong>מיפוי צרכים עסקיים:</strong> מטרות, KPI, מגבלות ורגולציה.</li>
+        <li><strong>בחירת פתרון:</strong> מקומי/ענן לפי עלות‑ביצועים, פרטיות ותפעול.</li>
+        <li><strong>POC מהיר:</strong> הוכחת היתכנות ממוקדת Use‑Case.</li>
+        <li><strong>הדרכה והטמעה:</strong> תהליכים וכלים מותאמים לצוותים.</li>
+        <li><strong>מדידה והרחבה:</strong> בקרה שוטפת והגדלת היקף היישום.</li>
+      </ol>
+    </section>
+
+    <!-- Model comparisons / Videos -->
+    <section class="block">
+      <h2>סרטוני השוואת מודלים ובחינת יכולות</h2>
+      <p>
+        הפקה שוטפת של סרטוני השוואה בין מודלים/כלים בתחומים שונים (שפה, תמונה, אוטומציה) — מסייע בבחירת פתרון מיטבי לארגון.
+        <span class="section-note">פלייליסט/קישורים יסופקו לפי צורך.</span>
+      </p>
+    </section>
+
+    <!-- Education & Certifications (optional placeholders) -->
+    <section class="block">
+      <h2>השכלה ותעודות</h2>
+      <ul>
+        <li>[תואר/תעודה רלוונטיים] — [מוסד], [שנה]</li>
+        <li>הסמכות רלוונטיות (דוגמאות): AWS Certified Machine Learning – Specialty; Microsoft Azure AI Engineer Associate; Google Cloud Professional Machine Learning Engineer</li>
+        <li>קורסים מקצועיים: Coursera Generative AI, Hugging Face (Models/Inference), OpenAI API, Docker, MLOps, Prompt Engineering</li>
+      </ul>
+    </section>
+
+    <!-- Tools & Platforms -->
+    <section class="block">
+      <h2>כלים ופלטפורמות</h2>
+      <div class="chip-list">
+        <span class="chip">Hugging Face (Models, Spaces, Inference)</span>
+        <span class="chip">OpenAI API</span>
+        <span class="chip">FastAPI</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Linux/Windows</span>
+        <span class="chip">Git</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Stable Diffusion</span>
+      </div>
+    </section>
+
+    <!-- ATS Keywords -->
+    <section class="block">
+      <h2>מילות מפתח (ATS)</h2>
+      <div class="chip-list">
+        <span class="chip">AI Consultant</span>
+        <span class="chip">Generative AI</span>
+        <span class="chip">NLP</span>
+        <span class="chip">Prompt Engineering</span>
+        <span class="chip">RAG</span>
+        <span class="chip">MLOps</span>
+        <span class="chip">On‑Prem / Edge</span>
+        <span class="chip">Cloud</span>
+        <span class="chip">AWS</span>
+        <span class="chip">Azure</span>
+        <span class="chip">GCP</span>
+        <span class="chip">ROI</span>
+        <span class="chip">KPI</span>
+        <span class="chip">Change Management</span>
+        <span class="chip">Cost Reduction</span>
+      </div>
+    </section>
+
+    <!-- Note -->
+    <section class="block">
+      <p class="section-note">
+        קיימים פרויקטים נוספים וניסיון עם מגוון מודלים; רשימה מלאה וקישורים לדוגמאות/דמואים יינתנו לפי צורך.
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>
